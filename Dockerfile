@@ -1,3 +1,5 @@
-FROM grpc/go:latest
+FROM golang:bullseye
 
-RUN rm -rf /usr/local/go && curl -sL "https://storage.googleapis.com/golang/$(curl -s https://golang.org/VERSION?m=text).linux-amd64.tar.gz" | tar xz -C /usr/local
+RUN apt-get update && \
+	apt-get install -y protobuf-compiler && \
+	rm -rf /var/lib/apt/lists/*
